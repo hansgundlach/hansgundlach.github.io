@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Sage Cell Server</title>
+    <script src="https://sagecell.sagemath.org/static/jquery.min.js"></script>
+    <script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+
+
+    <script>$(function () {
+    // Make the div with id 'mycell' a Sage cell
+   sagecell.makeSagecell({inputLocation:  '#mycell',
+                       template:       sagecell.templates.minimal,
+                       hide: ["editor","evalButton"],
+                       autoeval: true});
+                           
+    // Make *any* div with class 'compute' a Sage cell
+
+    });
+    </script>
+  </head>
+  <body>
+
+
+  <h2>Factorial</h2>
+  Click the “Activate” button below to calculate factorials.
+    <div id="mycell">
+x,y = var('x,y')
+html("<h1>triple integrater<h1>")
+permutations = ["dx dy","dy dx"]
+@interact
+
+def  interplay(order= permutations,function= input_box(sin(x)),lower_x_bound= input_box(0),upper_x_bound = input_box(1),lower_y_bound=input_box(0),upper_y_bound=input_box(1),showGraph = checkbox(default = True)):
+     if permutations == "dx,dy":
+         result = 2 #function.integrate(x,lower_x_bound,upper_x_bound).integrate(y,lower_y_bound,upper_y_bound)
+     else:
+        result =2  #function.integrate(y,lower_y_bound,).integrate(x,lower_x_bound,upper_x_bound)
+    
+    
+    
+    
+     graph = plot3d(function,(x,lower_x_bound,upper_x_bound),(y,lower_y_bound,upper_y_bound),fill=True,color = "orange",spin = 4)
+     if showGraph == True :
+          
+        html("<h3>Graph of Integrated Region</h3>")
+        show(graph)
+     html("<h3>Numerical Result</h3>")
+     
+     
+        
+     show(result)
+html("<p> Created by Hans Gundlach </p>")
+ </script>
+</div>
+
+
+  </body>
+</html>
