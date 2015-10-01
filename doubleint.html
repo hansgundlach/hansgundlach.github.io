@@ -15,7 +15,7 @@
                        template:       sagecell.templates.minimal,
                        hide: ["editor","evalButton"],
                        autoeval: true});
-                           
+
     // Make *any* div with class 'compute' a Sage cell
 
     });
@@ -27,31 +27,43 @@
   <h2>Factorial</h2>
   Alternative to Mathematica double integrater
     <div id="mycell">
-x,y = var('x,y')
-html("<h1>triple integrater<h1>")
-permutations = ["dx dy","dy dx"]
-@interact
+      from sage.plot.plot3d.shapes import Box
+      x,y = var('x,y')
+      html("<h1>triple integrater<h1>")
+      permutations = ["dx dy","dy dx"]
+      @interact
 
-def  interplay(order= permutations,function= input_box(sin(x)),lower_x_bound= input_box(0),upper_x_bound = input_box(1),lower_y_bound=input_box(0),upper_y_bound=input_box(1),showGraph = checkbox(default = True)):
-     if permutations == "dx,dy":
-         result = 2 #function.integrate(x,lower_x_bound,upper_x_bound).integrate(y,lower_y_bound,upper_y_bound)
-     else:
-        result =2  #function.integrate(y,lower_y_bound,).integrate(x,lower_x_bound,upper_x_bound)
-    
-    
-    
-    
-     graph = plot3d(function,(x,lower_x_bound,upper_x_bound),(y,lower_y_bound,upper_y_bound),fill=True,color = "orange",spin = 4)
-     if showGraph == True :
-          
-        html("<h3>Graph of Integrated Region</h3>")
-        show(graph)
-     html("<h3>Numerical Result</h3>")
-     
-     
-        
-     show(result)
-html("<p> Created by Hans Gundlach </p>")
+      def  interplay(order= permutations,function= input_box(sin(x)),lower_x_bound= input_box(0),upper_x_bound = input_box(1),lower_y_bound=input_box(0),upper_y_bound=input_box(1),showGraph = checkbox(default = True)):
+           if permutations == "dx dy":
+
+                   result = integral(integral(function,x,lower_x_bound,upper_x_bound),y,lower_y_bound,upper_y_bound)#function.integrate(x,lower_x_bound,upper_x_bound).integrate(y,lower_y_bound,upper_y_bound)
+                   s = "$\int_{2}^{3}  \int_{4}^{5} {0} \,dxdy = {1} $"
+           else:
+                  result =integral(integral(function,y,lower_y_bound,upper_y_bound),y,lower_x_bound,upper_x_bound)
+                  s = "$\int_{4}^{5}  \int_{2}^{3} {0} \,dydx = {1} $"
+
+
+
+           graph = plot3d(function,(x,lower_x_bound,upper_x_bound),(y,lower_y_bound,upper_y_bound),fill=True,color = "orange",spin = 4)
+           if showGraph == True :
+
+                html("<h3>Graph of Integrated Region</h3>")
+                delta = upper_x_bound - lower_x_bound
+                B =  sum([Box([.01,.1,function(i*delta/100)/2], color="blue").translate((delta*i/100,0,function(i*delta/100)/2)) for i in [0..100]])
+                show(graph + B)
+           else:
+                show(graph)
+           html("<h3>Numerical Result</h3>")
+
+
+           #s = "$\int_{2}^{3}  \int_{4}^{5} {0} \,dxdy = {1} $"
+
+           p = s.format(function, result,lower_x_bound,upper_x_bound,lower_y_bound,upper_y_bound)
+           html("%s" %p)
+
+
+           #show(result)
+      html("<p> Created by Hans Gundlach </p>")
  </script>
 </div>
 
