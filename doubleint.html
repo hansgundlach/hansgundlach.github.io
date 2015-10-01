@@ -28,12 +28,11 @@
   Alternative to Mathematica double integrater
     <div id="mycell">
       from sage.plot.plot3d.shapes import Box
-    x,y = var('x,y')
-    html("<h1>triple integrater<h1>")
-    permutations = ["dx dy","dy dx"]
-    @interact
-
-    def  interplay(order= permutations,function= input_box(sin(x)),lower_x_bound= input_box(0),upper_x_bound = input_box(1),lower_y_bound=input_box(0),upper_y_bound=input_box(1),showGraph = checkbox(default = True)):
+x,y = var('x,y')
+html("<h1>triple integrater<h1>")
+permutations = ["dx dy","dy dx"]
+@interact
+def  interplay(order= permutations,function= input_box(sin(x)),lower_x_bound= input_box(0),upper_x_bound = input_box(1),lower_y_bound=input_box(0),upper_y_bound=input_box(1),showGraph = checkbox(default = True)):
                if permutations == "dx dy":
 
                        result = integral(integral(function,x,lower_x_bound,upper_x_bound),y,lower_y_bound,upper_y_bound)#function.integrate(x,lower_x_bound,upper_x_bound).integrate(y,lower_y_bound,upper_y_bound)
@@ -63,7 +62,7 @@
 
 
                #show(result)
-               html("<p> Created by Hans Gundlach </p>")    
+               html("<p> Created by Hans Gundlach </p>")
 
 </div>
 
