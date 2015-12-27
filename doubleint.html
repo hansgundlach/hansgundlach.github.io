@@ -27,7 +27,7 @@
   <h2>Double integrater</h2>
   Alternative to Mathematica double integrater. Way Better!
 <div id="mycell">
-html("<p> Created by Hans Gundlach </p>")"""
+html("<p> Created by Hans Gundlach </p>")
 x,y = var('x,y')
 html("<h1>Double Integrator<h1>")
 @interact
@@ -44,7 +44,7 @@ def  interplay(function= input_box(x*y),lower_x_bound= input_box(0),upper_x_boun
     html("%s" %q)
   except:
     print("Please enter better inputs")
-html("<p> Created by Hans Gundlach </p>")
+
 
 </div>
 
