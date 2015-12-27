@@ -27,7 +27,7 @@
   <h2>Double integrater</h2>
   Alternative to Mathematica double integrater. Way Better!
     <div id="mycell">
-      from sage.plot.plot3d.shapes import Box
+      """from sage.plot.plot3d.shapes import Box
 x,y = var('x,y')
 html("<h1>triple integrater<h1>")
 permutations = ["dx dy","dy dx"]
@@ -62,7 +62,24 @@ def  interplay(order= permutations,function= input_box(sin(x)),lower_x_bound= in
 
 
                #show(result)
-               html("<p> Created by Hans Gundlach </p>")
+html("<p> Created by Hans Gundlach </p>")"""
+x,y = var('x,y')
+html("<h1>Double Integrator<h1>")
+@interact
+def  interplay(function= input_box(x*y),lower_x_bound= input_box(0),upper_x_bound = input_box(x),lower_y_bound=input_box(0),upper_y_bound=input_box(1),dydx = checkbox(default = False)):
+  try:
+    if dydx == False:
+      result = integral(integral(function,x,lower_x_bound,upper_x_bound),y,lower_y_bound,upper_y_bound)
+
+      q ="$\int_%s^{%s} \int_%s^%s %s \,dx\,dy = %s $" % (lower_y_bound, upper_y_bound,lower_x_bound,upper_x_bound,function,result)
+
+    else:
+      result = integral(integral(function,y,lower_y_bound,upper_y_bound),x,lower_x_bound,upper_x_bound)
+      q ="$\int_%s^{%s} \int_%s^%s %s \,dx\,dy = %s $" % (lower_y_bound, upper_y_bound,lower_x_bound,upper_x_bound,function,result)
+    html("%s" %q)
+  except:
+    print("Please enter better inputs")
+html("<p> Created by Hans Gundlach </p>")
 
 </div>
 
