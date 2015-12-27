@@ -35,6 +35,7 @@ def  interplay(function= input_box(x*y),lower_x_bound= input_box(0),upper_x_boun
   try:
     if dydx == False:
       result = integral(integral(function,x,lower_x_bound,upper_x_bound),y,lower_y_bound,upper_y_bound)
+      print(result)
 
       q ="$\int_%s^{%s} \int_%s^%s %s \,dx\,dy = %s $" % (lower_y_bound, upper_y_bound,lower_x_bound,upper_x_bound,function,result)
 
