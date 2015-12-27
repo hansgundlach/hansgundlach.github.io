@@ -29,7 +29,6 @@
 <div id="mycell">
 
 x,y = var('x,y')
-
 @interact
 def  interplay(function= input_box(x*y),lower_x_bound= input_box(0),upper_x_bound = input_box(x),lower_y_bound=input_box(0),upper_y_bound=input_box(1),dydx = checkbox(default = False)):
   try:
