@@ -42,8 +42,9 @@ def  interplay(function= input_box(x*y),lower_x_bound= input_box(0),upper_x_boun
       result = integral(integral(function,y,lower_y_bound,upper_y_bound),x,lower_x_bound,upper_x_bound)
       q ="$\int_%s^{%s} \int_%s^%s %s \,dx\,dy = %s $" % (lower_y_bound, upper_y_bound,lower_x_bound,upper_x_bound,function,result)
     html("%s" %q)
-  except:
+  except Exception as e:
     print("Please enter better inputs")
+    print(e)
 
 
 </div>
