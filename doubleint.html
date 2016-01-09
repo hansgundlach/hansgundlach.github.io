@@ -32,27 +32,19 @@
 
 
 
-
-
-x, y = var('x y')
-html("<h1>Double Integrator</h1>")
+x0  = 0
+f   = sin(x)*e^(-x)
+p   = plot(f,-1,5, thickness=2)
+dot = point((x0,f(x=x0)),pointsize=80,rgbcolor=(1,0,0))
 @interact
-def interplay(function=input_box(x*y),lower_x_bound=input_box(0),upper_x_bound=input_box(x),lower_y_bound=input_box(0),upper_y_bound=input_box(1),dydx=checkbox(default=False)):
- try:
-    if dydx is False:
-      result = integral(integral(function, x, lower_x_bound, upper_x_bound),y, lower_y_bound, upper_y_bound)
-      q = "$\int {0}^{1}\int_{2}^{3} {4} \,dx\,dy = {5} $".format(lower_y_bound, upper_y_bound,lower_x_bound, upper_x_bound,function, result)
-    else:
-      result = integral(integral(function, y, lower_y_bound, upper_y_bound),
-                        x, lower_x_bound, upper_x_bound)
-      q = r"$\int_{%s}^{%s} \int_{%s}^{%s} %s \,dx\,dy = %s $" % (
-            lower_y_bound, upper_y_bound,
-            lower_x_bound, upper_x_bound,
-            function, result)
-    pretty_print(html("%s" % q))
- except Exception as e :
-    print("Please enter better inputs")
-    print(e)
+def _(order=(1..12)):
+  ft = f.taylor(x,x0,order)
+  pt = plot(ft,-1, 5, color='green', thickness=2)
+  html('$f(x)\;=\;%s$'%latex(f))
+  html('$\hat{f}(x;%s)\;=\;%s+\mathcal{O}(x^{%s})$'%(x0,latex(ft),order+1))
+  show(dot + p + pt, ymin = -.5, ymax = 1)
+
+
 </div>
 </body>
 <a href= http://hansenhoven.me/> More of my work</a>
