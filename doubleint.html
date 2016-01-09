@@ -36,9 +36,11 @@ def interplay(function=input_box(x*y),lower_x_bound=input_box(0),upper_x_bound=i
       result = integral(integral(function, x, lower_x_bound, upper_x_bound),y, lower_y_bound, upper_y_bound)
       print('hello');
       pretty_print(html("hello"))
-      q = r"int {0}^{1} int_{2}^{3} {4} ,dx,dy = {5} ".format(lower_y_bound, upper_y_bound,lower_x_bound, upper_x_bound,function, result)
+      q = r"$int {0}^{1} int_{2}^{3} {4} ,dx,dy = {5} $".format(lower_y_bound, upper_y_bound,lower_x_bound, upper_x_bound,function, result)
     else:
-      print("bad")
+      result = integral(integral(function, x, lower_x_bound, upper_x_bound),y, lower_y_bound, upper_y_bound)
+      q = r"$int {0}^{1} int_{2}^{3} {4} ,dx,dy = {5} $".format(lower_y_bound, upper_y_bound,lower_x_bound, upper_x_bound,function, result)
+
     pretty_print(html("%s" % q))
  except Exception as e :
     print("Please enter better inputs")
