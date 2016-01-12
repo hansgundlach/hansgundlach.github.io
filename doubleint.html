@@ -33,18 +33,18 @@ html("<h1>Double Integrator</h1>")
 def interplay(function=input_box(x),lower_x_bound=input_box(0),upper_x_bound=input_box(1),lower_y_bound=input_box(0),upper_y_bound=input_box(1),dydx=checkbox(default=False)):
  try:
     if dydx is False:
-      result = integral(integral(function, x, lower_x_bound, upper_x_bound),y, lower_y_bound, upper_y_bound)
+      result = integral(integral(function, x, lower_x_bound, upper_x_bound),y, lower_y_bound, upper_y_bound);
       #print('hello');
       #pretty_print(html("hello"))
 
-      q = "$ {0} $".format(result)
+      q = "$ {0} $".format(result);
       #q = r"$ 0} $".format(latex(result))
     else:
       result = integral(integral(function, y, lower_y_bound, upper_y_bound),x, lower_x_bound, upper_x_bound)
       q = r"${5} $".format( latex(result))
       #q="${0}$".format(latex(result))
-    #pretty_print(html("%s" %q))
-    pretty_print(html(q))
+    pretty_print(html("%s" %q))
+    #pretty_print(html(q));
  except Exception as e :
     print("Please enter better inputs")
     print(e)
