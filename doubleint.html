@@ -37,11 +37,11 @@ def interplay(function=input_box(x*y),lower_x_bound=input_box(0),upper_x_bound=i
       #print('hello');
       #pretty_print(html("hello"))
 
-      q = r"$ int {0}^{1} int_{2}^{3} {4} ,dx,dy = {5} $".format(lower_y_bound, upper_y_bound,lower_x_bound, upper_x_bound,latex(function), latex(result))
+      q = r"$ = {5} $".format( latex(result))
       #q = r"$ 0} $".format(latex(result))
     else:
       result = integral(integral(function, y, lower_y_bound, upper_y_bound),x, lower_x_bound, upper_x_bound)
-      q = r"$ int {0}^{1} int_{2}^{3} {4} ,dx,dy = {5} $".format(lower_y_bound, upper_y_bound,lower_x_bound, upper_x_bound,latex(function), latex(result))
+      q = r"$ = {5} $".format( latex(result))
       #q="${0}$".format(latex(result))
     #pretty_print(html("%s" %q))
     pretty_print(html(q))
