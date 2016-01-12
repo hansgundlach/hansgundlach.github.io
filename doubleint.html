@@ -38,7 +38,7 @@ def interplay(function=input_box(x),lower_x_bound=input_box(0),upper_x_bound=inp
       #pretty_print(html("hello"))
 
       q = "$ {0} $".format(result);
-      #q = r"$ 0} $".format(latex(result))
+
     else:
       result = integral(integral(function, y, lower_y_bound, upper_y_bound),x, lower_x_bound, upper_x_bound)
       q = r"${5} $".format( latex(result))
