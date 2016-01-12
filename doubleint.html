@@ -30,7 +30,7 @@
 x, y = var('x y')
 html("<h1>Double Integrator</h1>")
 @interact
-def interplay(function=input_box(x*y),lower_x_bound=input_box(0),upper_x_bound=input_box(x),lower_y_bound=input_box(0),upper_y_bound=input_box(1),dydx=checkbox(default=False)):
+def interplay(function=input_box(x*y),lower_x_bound=input_box(0),upper_x_bound=input_box(1),lower_y_bound=input_box(0),upper_y_bound=input_box(1),dydx=checkbox(default=False)):
  try:
     if dydx is False:
       result = integral(integral(function, x, lower_x_bound, upper_x_bound),y, lower_y_bound, upper_y_bound)
