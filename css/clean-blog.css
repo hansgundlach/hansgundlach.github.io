@@ -35,6 +35,29 @@ a img:hover,
 a img:focus {
   cursor: zoom-in;
 }
+
+
+
+.spacer {
+    margin-top: 40px; /* define margin as you see fit */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 blockquote {
   color: #777777;
   font-style: italic;
