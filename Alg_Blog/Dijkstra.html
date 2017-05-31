@@ -130,11 +130,15 @@
                     </p>
                     <h2 class = "section-heading">Technical Dijkstra</h2>
                     <p>
-                   Dijksta's algorithmn assumes that there are no negative weight cycles in a graph.
+                   Dijksta's algorithmn assumes that there are no negative weight cycles in a graph. As opposed to Bellman-Ford which finds the shortest paths in any weighted directed graphs
                    Time wise Dijkstra is fairly fast. The Fastest implementation of dijkstra using a fibbonaci heap takes
                    $O(E + V * log(V))$ time where V is the the number of vertices or nodes and E is the number of edges.
                    Alternatives to Dijkstra's include Bellman ford which has V*E complexity but is able to deal with negative edge weights and cycles.
-                   When certain properties are present liek bounded edge weights a montone priority queue can improve thigns further.
+                   Dijkstras algorithmn  efficiency does not depend on the edge weights. However , in real life edge weights can be very important.
+                   Large edgeweights might cause memory problems. Further, When certain properties are present like bounded edge weights a montone priority queue can improve the running time further.
+
+
+
                       </p>
 
 
@@ -228,6 +232,11 @@ def dijkstra(graph, source):
                                 prev[node] = next
 
                     return disted, prev
+
+
+print("the algorithnm runs through each node and updates the distance to each")
+
+print( "Each distance array is printed")
 
 dijkstra(distances, 'A')
 

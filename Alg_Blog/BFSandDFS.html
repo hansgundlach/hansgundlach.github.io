@@ -164,6 +164,9 @@ The algorithm repeats this  process until it has discovered every vertex. This a
 
                     <div id="cell">
     #this contains an implementation of BFS in python
+
+    #graph is an adjaceny list representation of a graph stored as a dictionary
+    
 graph = {
 
         '1': ['2', '3', '4'],
@@ -177,6 +180,8 @@ graph = {
         '7': ['11', '12']
 
         }
+
+#bfs finds best path from start to end which it stores in array
 
 def bfs(graph, start, end):
 
@@ -213,6 +218,8 @@ def bfs(graph, start, end):
             new_path.append(adjacent)
 
             queue.append(new_path)
+
+print("vertex path from 1 to 11")
 
 print bfs(graph, '1', '11')
 
