@@ -43,7 +43,7 @@ Your browser does not support the audio element.
 
 <div>
 <p class="text-left"> Slow Music </p>
-<audio class = "myMusicFast" onended= "endfunc()" id="myMusicSlow" controls>
+<audio class = "myMusicSlow" onended= "endfunc()" id="myMusicSlow" controls>
   <!--<source src="horse.ogg" type="audio/ogg">-->
   <source src="Simon.mp3" type="audio/mpeg">
 Your browser does not support the audio element.
@@ -133,12 +133,12 @@ $(document).ready(function() {
       //console.log(list_lastten);
       //if you need to slow down
       if(randheart > heartset){
-        console.log();
+        console.log(randheart);
         console.log("slow down");
         setHalfVolume();
         //if you need to speed up
       }else if(randheart < heartset - 5){
-        console.log(heartset);
+        console.log(randheart);
         console.log("speed up");
         setSpeedUp()
         //if your running is just right
@@ -186,23 +186,25 @@ function getVolume() {
 function setHalfVolume() {
      vid.playbackRate = 0.4;
     vid.volume = 0.1;
-    othervid.volume = 0.1;
-    othervid.palybackRate = 0.7;
+    othervid.volume = 0.5;
+    othervid.playbackRate = 0.4;
 }
 
 
 
 function setFullVolume() {
-  vid.playbackRate = 1;
+  vid.playbackRate = 1.0;
     othervid.volume = 1.0;
     vid.volume = 1.0;
-    othervid.playbackRate = 1;
+    othervid.playbackRate = 1.0;
 }
 
 
 function setSpeedUp() {
 vid.playbackRate = 2;
 othervid.playbackRate =2;
+vid.volume = 1;
+othervid.volume = 1;
 
 }
 
