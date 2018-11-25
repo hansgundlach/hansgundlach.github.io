@@ -18,7 +18,7 @@
 
 
   <div class="form-group">
-  Age: <input type="text" id="nameField" placeholder="150"> </input>
+good heart rate based on age: <input type="text" id="nameField" placeholder="150"> </input>
 <button class="btn btn-primary btn-lg" id="submitName">Submit</button>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
   </div>
 
@@ -132,19 +132,20 @@ $(document).ready(function() {
       var avg_last = total / list_lastten.length;
       //console.log(list_lastten);
       //if you need to slow down
-      if(randheart > heartset + 5){
+      if(randheart > heartset){
         console.log();
-        console.log("half time");
+        console.log("slow down");
         setHalfVolume();
         //if you need to speed up
       }else if(randheart < heartset - 5){
         console.log(heartset);
-        console.log("below half");
-        setFullVolume();
+        console.log("speed up");
         setSpeedUp()
         //if your running is just right
       }else{
-        console.log("speedup")
+        console.log("just right")
+        console.log(randheart)
+        console.log(heartset)
         setFullVolume();
 
       }
@@ -183,7 +184,7 @@ function getVolume() {
 }
 
 function setHalfVolume() {
-     vid.playbackRate = 0.5;
+     vid.playbackRate = 0.4;
     vid.volume = 0.1;
     othervid.volume = 0.1;
     othervid.palybackRate = 0.7;
@@ -192,22 +193,18 @@ function setHalfVolume() {
 
 
 function setFullVolume() {
-  vid.playbackRate = 1
+  vid.playbackRate = 1;
     othervid.volume = 1.0;
     vid.volume = 1.0;
     othervid.playbackRate = 1;
 }
 
 
-function setSpeedUp(){
-vid.playbackRate = 2
-othervid.playbackRate =2
+function setSpeedUp() {
+vid.playbackRate = 2;
+othervid.playbackRate =2;
 
 }
 
 
 </script>
-
-
-</body>
-</html>
