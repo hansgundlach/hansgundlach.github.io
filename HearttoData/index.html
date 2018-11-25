@@ -1,0 +1,175 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- cdn make it quick-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="jumbotron text-center" color ="orange">
+  <h1>Heart Music</h1>
+  <p>play the music of your heart</p>
+</div>
+
+
+  <div class="form-group">
+  Age: <input type="text" id="nameField" placeholder="20"> </input>
+<button id="submitName">Submit</button>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+  </div>
+
+
+<!--volume?</button>
+<button onclick="setHalfVolume()" type="button">Set volume to 0.2</button>
+<button onclick="setFullVolume()" type="button">Set volume to 1.0</button><br>-->
+
+<!--<video id="myMusic" width="320" height="176" controls>
+  <source src="mov_bbb.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>-->
+<div>
+<p class="text-left"> Fast Music </p>
+<audio class = "myMusicFast" id="myMusicFast" onended="endfunc()" controls>
+  <!--<source src="horse.ogg" type="audio/ogg">-->
+  <source src="Schwifty.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+</div>
+
+
+<div>
+<p class="text-left"> Slow Music </p>
+<audio class = "myMusicFast" onended= "endfunc()" id="myMusicSlow" controls>
+  <!--<source src="horse.ogg" type="audio/ogg">-->
+  <source src="Simon.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+</div>
+
+
+
+
+
+
+<script>
+
+//learn how to make API fitbit jQuery
+//GET https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json
+
+
+
+
+
+
+
+
+
+
+
+
+
+//switch to slow song if you are too Slow
+function endfunc() {
+      var something = Math.random();
+      //list_lastten.push(something);
+      //console.log(list_lastten);
+      if(something > 1){
+        console.log("half time");
+        document.getElementById("myMusicFast").play();
+      }else {
+        console.log("below half");
+        document.getElementById("myMusicSlow").play();
+  }
+}
+
+//get user input
+
+
+
+
+//get optimal heartrate
+  function myFunction() {
+      document.getElementById("myForm").submit();
+  }
+
+
+/*var myVar = setInterval(myTimer,3000);
+console.log(myVar);
+var list_lastten = [];*/
+
+
+
+//immitating having fit bit API
+//quiets music every few minutes
+
+
+
+$(document).ready(function() {
+  var myVar = setInterval(myTimer,3000);
+  console.log(myVar);
+  var list_lastten = [];
+  var someval = 20;
+  function myTimer(){
+       var something = Math.random();
+      list_lastten.push(something);
+      //console.log(list_lastten);
+      if(something > someval){
+        console.log(someval);
+        console.log("half time");
+        setHalfVolume();
+      }else {
+        console.log(someval);
+        console.log("below half");
+        setFullVolume();
+      }
+
+  }
+   $("#submitName").click(function() {
+
+       someval=  $("#nameField").val();
+
+       console.log(someval);
+
+   });
+ });
+
+
+/*function myTimer(){
+     var something = Math.random();
+    list_lastten.push(something);
+    //console.log(list_lastten);
+    if(something > 0.5){
+      console.log("half time");
+      setHalfVolume()
+    }else {
+      console.log("below half");
+      setFullVolume()
+    }
+
+}*/
+
+
+
+var vid = document.getElementById("myMusicFast");
+var othervid = document.getElementById("myMusicSlow")
+function getVolume() {
+    alert(vid.volume);
+}
+
+function setHalfVolume() {
+    vid.volume = 0.1;
+    othervid.volume = 0.1;
+}
+
+
+
+function setFullVolume() {
+    othervid.volume = 1.0
+    vid.volume = 1.0;
+}
+</script>
+
+
+</body>
+</html>
