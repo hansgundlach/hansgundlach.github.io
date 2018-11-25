@@ -8,15 +8,18 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<div class="jumbotron text-center" color ="orange">
-  <h1>Heart Music</h1>
+
+<div class = "container">
+<div class="jumbotron center" color ="orange">
+  <h1>HEARTMUSIC</h1>
   <p>play the music of your heart</p>
+</div>
 </div>
 
 
   <div class="form-group">
-  Age: <input type="text" id="nameField" placeholder="20"> </input>
-<button id="submitName">Submit</button>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+  Age: <input type="text" id="nameField" placeholder="150"> </input>
+<button class="btn btn-primary btn-lg" id="submitName">Submit</button>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
   </div>
 
 
@@ -32,7 +35,7 @@
 <p class="text-left"> Fast Music </p>
 <audio class = "myMusicFast" id="myMusicFast" onended="endfunc()" controls>
   <!--<source src="horse.ogg" type="audio/ogg">-->
-  <source src="Schwifty.mp3" type="audio/mpeg">
+  <source src="Hampster.mp3" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
 </div>
@@ -71,6 +74,10 @@ Your browser does not support the audio element.
 
 //switch to slow song if you are too Slow
 function endfunc() {
+
+
+
+      //try to see if you can get wrolling average
       var something = Math.random();
       //list_lastten.push(something);
       //console.log(list_lastten);
@@ -109,27 +116,45 @@ $(document).ready(function() {
   var myVar = setInterval(myTimer,3000);
   console.log(myVar);
   var list_lastten = [];
-  var someval = 20;
+  var heartset = 150;
   function myTimer(){
-       var something = Math.random();
-      list_lastten.push(something);
+      // randheart goes from 140 t0 160
+      //random number 140 plus or minus 10
+      var randheart = 140 + 20*Math.random();
+
+      list_lastten.push(randheart);
+      list_lastten.pop();
+//calculate new average
+      var total = 0;
+      for(var i = 0; i < list_lastten.length; i++) {
+        total += list_lastten[i];
+      }
+      var avg_last = total / list_lastten.length;
       //console.log(list_lastten);
-      if(something > someval){
-        console.log(someval);
+      //if you need to slow down
+      if(randheart > heartset + 5){
+        console.log();
         console.log("half time");
         setHalfVolume();
-      }else {
-        console.log(someval);
+        //if you need to speed up
+      }else if(randheart < heartset - 5){
+        console.log(heartset);
         console.log("below half");
         setFullVolume();
+        setSpeedUp()
+        //if your running is just right
+      }else{
+        console.log("speedup")
+        setFullVolume();
+
       }
 
   }
    $("#submitName").click(function() {
 
-       someval=  $("#nameField").val();
+   heartset=  $("#nameField").val();
 
-       console.log(someval);
+       console.log(heartset);
 
    });
  });
@@ -158,16 +183,29 @@ function getVolume() {
 }
 
 function setHalfVolume() {
+     vid.playbackRate = 0.5;
     vid.volume = 0.1;
     othervid.volume = 0.1;
+    othervid.palybackRate = 0.7;
 }
 
 
 
 function setFullVolume() {
-    othervid.volume = 1.0
+  vid.playbackRate = 1
+    othervid.volume = 1.0;
     vid.volume = 1.0;
+    othervid.playbackRate = 1;
 }
+
+
+function setSpeedUp(){
+vid.playbackRate = 2
+othervid.playbackRate =2
+
+}
+
+
 </script>
 
 
